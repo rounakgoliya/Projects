@@ -1,0 +1,32 @@
+<div id="container" style="height: 400px"></div>
+<div>
+	<table>
+			<thead>
+				<tr>
+					<th></th>
+					<th>Id</th>
+					<th>Label</th>
+					<th>X position</th>
+					<th>Y position</th>
+					<th>Time</th>
+					<th>Mouse Frequency</th>
+					<th>Click Frequency</th>
+				</tr>
+			</thead>
+			<tbody>
+					<tr ng-repeat= "x in Array |orderBy:'id'">
+					<td></td>
+					<td>{{x.id}}</td>
+					<td>{{x.label}}</td>
+					<td>{{x.Xpos}}</td>
+					<td>{{x.Ypos}}</td>
+					<td>{{x.Time}}</td>
+					<td>{{x.freq}}</td>
+					<td>{{x.clickfreq}}</td>
+					
+				</tr>
+				
+			</tbody>
+		</table>
+</div>
+
