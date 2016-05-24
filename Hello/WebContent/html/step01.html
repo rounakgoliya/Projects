@@ -1,0 +1,39 @@
+<div>
+ <div ng-include ="'header.html'"></div>
+<div class="row">
+		<div class="col-lg-3">
+			<div class="minilogo">
+			<img src="img/angularjs-mini-logo.jpg" >
+			</div>
+			 <div>
+		            <ul ng-repeat="t in templates" style="font-size: 25px;">
+		                <li>
+		                    <a href="#{{t.url}}">
+		                        {{t.name}}
+		                    </a>
+		                </li>
+		               
+		            </ul>
+		        </div>
+		</div>
+		
+		<div class="col-lg-9">
+		
+		 <h1>Start Bootstrap</h1>
+		                        <p>Bootstrap is the most popular HTML, CSS, and JavaScript framework for developing responsive, mobile-first web sites.</p>
+		                        <ul>
+		                        	<li>Bootstrap is a free front-end framework for faster and easier web development</li>
+		                        	<li>Bootstrap includes HTML and CSS based design templates for typography, forms, buttons, tables, navigation, modals, image carousels and many other, as well as optional JavaScript plugins</li>
+		                        	<li>Bootstrap also gives you the ability to easily create responsive designs</li>
+		                        </ul>
+		                        <table class="lamp"><tr>
+	<th style="width:34px"><img src="../img/lamp.png"style="height:32px;width:32px"></th>
+<td><b>What is Responsive Web Design?<br></b><br>
+Responsive web design is about creating web sites which automatically adjust 
+themselves to look good on all devices, from small phones to large desktops.</td>
+</tr></table>
+		                        
+				
+		</div>
+</div>
+</div>

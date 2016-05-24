@@ -1,0 +1,41 @@
+<div>
+ <div ng-include ="'header.html'"></div>
+<div class="row">
+		<div class="col-lg-3">
+			<div class="minilogo">
+			<img src="img/angularjs-mini-logo.jpg" >
+			</div>
+			 <div>
+		            <ul ng-repeat="t in templates" style="font-size: 25px;">
+		                <li>
+		                    <a href="#{{t.url}}">
+		                        {{t.name}}
+		                    </a>
+		                </li>
+		               
+		            </ul>
+		        </div>
+		</div>
+		
+		<div class="col-lg-9">
+		
+		 <h1>AngularJS Expressions</h1>
+		                        <p>AngularJS binds data to HTML using <b>Expressions.</b></p>
+		                        <ul>
+		                        	<li>AngularJS expressions are written inside double braces: <b>{{ expression }}.</b></li>
+		                        	<li>AngularJS expressions binds data to HTML the same way as the <b>ng-bind</b> directive.</li>
+		                        	<li>AngularJS will "output" data exactly where the expression is written.</li>
+		                        	<li><b>AngularJS expressions</b> are much like <b>JavaScript expressions:</b> They can contain literals, operators, and variables.Example {{ 5 + 5 }} or {{ firstName + " " + lastName }}</li>
+		                        </ul>
+	
+		                       <h2> AngularJS Expressions vs. JavaScript Expressions</h2>
+<p>Like JavaScript expressions, AngularJS expressions can contain literals, operators, and variables.
+Unlike JavaScript expressions, AngularJS expressions can be written inside HTML.
+AngularJS expressions do not support conditionals, loops, and exceptions, while JavaScript expressions do.
+AngularJS expressions support filters, while JavaScript expressions do not.</p>
+
+		                        
+				
+		</div>
+</div>
+</div>

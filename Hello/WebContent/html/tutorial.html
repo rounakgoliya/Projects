@@ -1,0 +1,29 @@
+<div class="row">
+		<div class="col-lg-3">
+			<div class="minilogo">
+			<img src="img/angularjs-mini-logo.jpg" >
+			</div>
+			 <div>
+		            <ul ng-repeat="t in templates" style="font-size: 25px;">
+		                <li>
+		                    <a href="#{{t.url}}">
+		                        {{t.name}}
+		                    </a>
+		                </li>
+		               
+		            </ul>
+		        </div>
+		</div>
+		
+		<div class="col-lg-9">
+		
+		 <h1>Angular JS</h1>
+		                        <p>AngularJS extends HTML with new attributes.AngularJS is perfect for Single Page Applications (SPAs).AngularJS is easy to learn.</p>
+		                        <h2>This Tutorial</h2>
+		                        <p>This tutorial is specially designed to help you learn AngularJS as quickly and efficiently as possible.
+First, you will learn the basics of AngularJS: directives, expressions, filters, modules, and controllers.
+Then you will learn everything else you need to know about AngularJS:
+Events, DOM, Forms, Input, Validation, Http, and more.</p>
+				<div ng-include src="template.url"></div>
+		</div>
+</div>

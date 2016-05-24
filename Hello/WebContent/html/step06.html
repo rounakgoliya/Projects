@@ -1,0 +1,35 @@
+<div>
+ <div ng-include ="'header.html'"></div>
+<div class="row">
+		<div class="col-lg-3">
+			<div class="minilogo">
+			<img src="img/angularjs-mini-logo.jpg" >
+			</div>
+			 <div>
+		            <ul ng-repeat="t in templates" style="font-size: 25px;">
+		                <li>
+		                    <a href="#{{t.url}}">
+		                        {{t.name}}
+		                    </a>
+		                </li>
+		               
+		            </ul>
+		        </div>
+		</div>
+		
+		<div class="col-lg-9">
+		
+		 <h1>AngularJS Scope</h1>
+		                        <p>The scope is the binding part between the HTML (view) and the JavaScript (controller).
+								The scope is an object with the available properties and methods.
+								The scope is available for both the view and the controller.</p>
+		                        <ul>
+		                        	<li>When adding properties to the $scope object in the controller, the view (HTML) gets access to these properties.</li>
+		                        	<li>In the view, you do not use the prefix $scope, you just refer to a propertyname, like {{carname}}.</li>
+		                        	<li>Controller, which is the JavaScript function that makes/changes/removes/controls the data.</li>
+		                        </ul>
+		                           
+				
+		</div>
+</div>
+</div>

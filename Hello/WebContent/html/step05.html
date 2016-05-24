@@ -1,0 +1,33 @@
+<div>
+ <div ng-include ="'header.html'"></div>
+<div class="row">
+		<div class="col-lg-3">
+			<div class="minilogo">
+			<img src="img/angularjs-mini-logo.jpg" >
+			</div>
+			 <div>
+		            <ul ng-repeat="t in templates" style="font-size: 25px;">
+		                <li>
+		                    <a href="#{{t.url}}">
+		                        {{t.name}}
+		                    </a>
+		                </li>
+		               
+		            </ul>
+		        </div>
+		</div>
+		
+		<div class="col-lg-9">
+		
+		 <h1>AngularJS Controllers</h1>
+		                        <p>AngularJS controllers<b> control the data</b> of AngularJS applications.
+								AngularJS controllers are regular <b>JavaScript Objects.</b></p>
+		                        <ul>
+		                        	<li>AngularJS applications are controlled by controllers.</li>
+		                        	<li>The <b>ng-controller</b> directive defines the application controller.</li>
+		                        	<li>A controller is a <b>JavaScript Object</b>, created by a standard JavaScript<b> object constructor.</b></li>
+		                        </ul>
+		               
+		</div>
+</div>
+</div>

@@ -1,0 +1,72 @@
+	<h2>Shopping Card</h2>
+<div>
+	<form name="Itemform" novalidate>
+    <table class="table">
+        <tr>
+            
+            <th>Description</th>
+            <th>Qty</th>
+            <th>Cost</th>
+            <th>Total</th>
+            <th></th>
+        </tr>
+        <tr ng:repeat="item in invoice.items">
+            <td><input type="text" ng:model="item.description" required class="input-small"></td>           
+            <td><input type="number" ng:model="item.qty" required class="input-mini"></td>
+            <td><input type="number" ng:model="item.cost" required class="input-mini"></td>
+            <td>{{item.qty * item.cost | currency}}</td>
+            <td>
+                [<a href ng:click="removeItem($index)">X</a>]
+            </td>
+        </tr>
+        <tr>
+            <td><input type="submit"  ng-click="addItem()" class="btn btn-primary" value="Add Item" />&nbsp&nbsp<input type="submit"  ng-disabled="Itemform.$invalid" ng-click="checkout()" class="btn btn-warning" value="Checkout" /></td>
+            
+            <td></td>
+            <td>Total:</td>
+            <td>{{total() | currency}}</td>
+        </tr>
+    </table>
+	</form>
+</div>
+
+
+
+<div class="row">
+	<div class="col-md-4">
+		<div>
+		<img class="image1" src="img/i1.jpg"><p ng-model="p1">Price: $799</p>
+		 
+		</div>
+		<div>
+		<img class="image2" src="img/i2.jpg"><p ng-model="p2">Price: $899</p>
+		 
+		</div>
+	</div>
+	
+	<div class="col-md-4">
+			<div>
+			<img class="image3" src="img/i3.jpg"><p ng-model="p3">Price: $849</p>
+			 
+			</div>
+			<div>
+			<img class="image4" src="img/i4.jpg"><p>Price: $989</p>
+			 
+			</div>
+	</div>
+
+	<div class="col-md-4">
+			<div>
+			<img class="image5" src="img/i5.jpg"><p>Price: $759</p>
+			 
+			</div>
+			<div>
+			<img class="image6" src="img/i6.jpg"><p>Price: $1089</p>
+			 
+			</div>
+	</div>
+	
+	</div>
+	
+	
+

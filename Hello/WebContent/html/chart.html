@@ -1,0 +1,25 @@
+<div>
+<form class="form-inline" role="form" name="cform">
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <input type="text" class="form-control" id="name" ng-model="name" required="required">
+  </div>
+  <div class="form-group">
+    <label for="apple">Apples:</label>
+    <input type="number" class="form-control" id="apple" ng-model="apple" required="required">
+  </div>
+   <div class="form-group">
+    <label for="banana">Bananas:</label>
+    <input type="number" class="form-control" id="banana" ng-model="banana" required="required">
+  </div>
+   <div class="form-group">
+    <label for="orange">Oranges:</label>
+    <input type="number" class="form-control" id="orange" ng-model="orange" required="required">
+  </div>
+ {{name}}
+ <button id="Save" ng-click="add()" ng-disabled="cform.$invalid" class="btn btn-info">Submit</button>
+ 
+</form>
+ 
+</div>
+<div id="container" style="width:100%; height:400px;"></div>

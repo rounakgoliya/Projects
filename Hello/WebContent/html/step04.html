@@ -1,0 +1,40 @@
+<div>
+ <div ng-include ="'header.html'"></div>
+<div class="row">
+		<div class="col-lg-3">
+			<div class="minilogo">
+			<img src="img/angularjs-mini-logo.jpg" >
+			</div>
+			 <div>
+		            <ul ng-repeat="t in templates" style="font-size: 25px;">
+		                <li>
+		                    <a href="#{{t.url}}">
+		                        {{t.name}}
+		                    </a>
+		                </li>
+		               
+		            </ul>
+		        </div>
+		</div>
+		
+		<div class="col-lg-9">
+		
+		 <h1>AngularJS Directives</h1>
+		                        <p>AngularJS lets you extend HTML with new attributes called <b>Directives.</b>
+									AngularJS has a set of built-in directives which offers functionality to you applications.
+									AngularJS also lets you define your own directives.</p>
+		                        <ul>
+		                        	<li>The ng-app directive initializes an AngularJS application.</li>
+		                        	<li>The ng-init directive initializes application data.</li>
+		                        	<li>The ng-model directive binds the value of HTML controls (input, select, textarea) to application data.</li>
+		                        </ul>
+		                        <table class="lamp"><tr>
+	<th style="width:34px"><img src="../img/lamp.png"style="height:32px;width:32px"></th>
+<td><b>Note!!!<br></b><br>
+Using ng-init is not very common. You will learn how to initialize data in the chapter about controllers.</td>
+</tr></table>
+		                        
+				
+		</div>
+</div>
+</div>

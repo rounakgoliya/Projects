@@ -1,0 +1,41 @@
+<div>
+ <div ng-include ="'header.html'"></div>
+<div class="row">
+		<div class="col-lg-3">
+			<div class="minilogo">
+			<img src="img/angularjs-mini-logo.jpg" >
+			</div>
+			 <div>
+		            <ul ng-repeat="t in templates" style="font-size: 25px;">
+		                <li>
+		                    <a href="#{{t.url}}">
+		                        {{t.name}}
+		                    </a>
+		                </li>
+		               
+		            </ul>
+		        </div>
+		</div>
+		
+		<div class="col-lg-9">
+		
+		 <h1>AngularJS Modules</h1>
+		                        <p>An AngularJS module defines an application.
+								The module is a container for the different parts of an application.
+								The module is a container for the application controllers.
+								Controllers always belong to a module.</p>
+		                        <ul>
+		                        	<li>A module is created by using the AngularJS function angular.module</li>
+		                        	<li>Add a controller to your application, and refer to the controller with the ng-controller directive</li>
+		                        	<li>AngularJS has a set of built-in directives which you can use to add functionality to you application.</li>
+		                        </ul>
+		                        <table class="lamp"><tr>
+	<th style="width:34px"><img src="../img/lamp.png"style="height:32px;width:32px"></th>
+<td><b>Note<br></b><br>
+The [] parameter in the module definition can be used to define dependent modules.</td>
+</tr></table>
+		                        
+				
+		</div>
+</div>
+</div>

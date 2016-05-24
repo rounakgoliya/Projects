@@ -1,0 +1,60 @@
+<div>
+ <div ng-include ="'header.html'"></div>
+<div class="row">
+		<div class="col-lg-3">
+			<div class="minilogo">
+			<img src="img/angularjs-mini-logo.jpg" >
+			</div>
+			 <div>
+		            <ul ng-repeat="t in templates" style="font-size: 25px;">
+		                <li>
+		                    <a href="#{{t.url}}">
+		                        {{t.name}}
+		                    </a>
+		                </li>
+		               
+		            </ul>
+		        </div>
+		</div>
+		
+		<div class="col-lg-9">
+		
+		 <h1>AngularJS Filters</h1>
+		                        <p>Filters can be added to expressions and directives using a pipe character.</p>
+		                        	<h2>AngularJS Filters</h2>
+									<p>AngularJS filters can be used to transform data:</p>
+
+									<table>
+									<tr>
+										<th style="width:20%">Filter</th>
+										<th>Description</th>
+									</tr>
+									<tr>
+										<td>currency</td>
+										<td>Format a number to a currency format.</td>
+									</tr>
+									<tr>
+										<td>filter</td>
+										<td>Select a subset of items from an array.</td>
+									</tr>
+									<tr>
+										<td>lowercase</td>
+										<td>Format a string to lower case.</td>
+									</tr>
+									<tr>
+										<td>orderBy</td>
+										<td>Orders an array by an expression.</td>
+									</tr>
+									<tr>
+										<td>uppercase</td>
+										<td>Format a string to upper case.</td>
+									</tr>
+									</table>
+		                        
+		                        
+		                        
+		                        
+				
+		</div>
+</div>
+</div>

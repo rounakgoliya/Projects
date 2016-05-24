@@ -1,0 +1,73 @@
+<h2>Add Customer</h2>
+		<form name="custform" novalidate>
+			<fieldset class="form-group">
+				<label class="label label-default">Customer Id</label>
+				<input type="number" name="id" ng-model="user.id" ng-pattern="/^[0-9]*$/" placeholder="Enter id" required>
+				<span style="color:red" ng-show="custform.id.$dirty && custform.id.$invalid && custform.id.$pristine">
+					<span ng-show="custform.id.$error.required && custform.id.$error.pattern">Id is required.</span>
+				Invalid Id
+				</span>
+			</fieldset>
+			
+			
+			
+
+			<fieldset class="form-group">
+				<label class="label label-default">First Name</label>
+				<input type="text" name="fname" ng-model="user.fname" ng-pattern="/^[a-z A-Z]*$/" ng-minlength="2" ng-maxlength="20" placeholder="First Name" required>
+				<span style="color:red" ng-show="custform.fname.$dirty && custform.fname.$invalid && custform.fname.$pristine">
+					<span ng-show="custform.fname.$error.required && custform.fname.$error.pattern">FirstName is required.</span>
+				Invalid FirstName
+				</span>
+				<span style="color:red" ng-show="custform.fname.$error.minlength"> Your FirstName Should Contain Atleast 3 Characters</span>
+				<span style="color:red" ng-show="custform.fname.$error.maxlength"> Your FirstName Should Contain Atmost 20 Characters</span>
+				
+			</fieldset>
+
+			<fieldset class="form-group">
+				<label class="label label-default">Last Name</label>
+				<input type="text" name="lname" ng-model="user.lname" ng-pattern="/^[a-z @ A-Z]*$/" ng-minlength="3" ng-maxlength="20" placeholder="Last Name" required>
+				<span style="color:red" ng-show="custform.lname.$dirty && custform.lname.$invalid && custform.lname.$pristine">
+					
+					Invalid LastName
+				</span>
+				<span style="color:red" ng-show="custform.lname.$error.required && custform.lname.$error.pattern">LastName is required.</span>
+				<span style="color:red" ng-show="custform.lname.$error.minlength"> Your LastName Should Contain Atleast 3 Characters</span>
+				<span style="color:red" ng-show="custform.lname.$error.maxlength"> Your LastName Should Contain Atmost 6 Characters</span>
+			</fieldset>
+
+ 
+    
+			<fieldset class="form-group">
+				<label class="label label-default">Customer City</label>
+				<input type="text" name="city" ng-model="user.city" ng-pattern="/^[a-z A-Z]*$/" placeholder="Enter city" required>
+				<span style="color:red" ng-show="custform.city.$dirty && custform.city.$invalid && custform.city.$pristine">
+					<span ng-show="custform.city.$error.required && custform.city.$error.pattern">CityName is required.</span>
+				Invalid CityName
+				</span>
+			</fieldset>
+			
+			<fieldset class="form-group">
+				<label class="label label-default">Customer Contact</label>
+				<input type="text" name="contact" ng-model="user.contact" ng-pattern="/^[789]\d{9}$/" placeholder="Enter contact" required>
+				<span style="color:red" ng-show="custform.contact.$dirty && custform.contact.$invalid && custform.contact.$pristine">
+					<span ng-show="custform.contact.$error.required && custform.contact.$error.pattern">Contact is required.</span>
+				Invalid Contact
+				</span>
+			</fieldset>
+			
+			<fieldset class="form-group">
+				<label class="label label-default">Customer e-mail</label>
+				<input type="email" name="email" ng-model="user.email" placeholder="Enter email" required>
+				<span style="color:red" ng-show="custform.email.$dirty && custform.email.$invalid && custform.email.$pristine">
+					<span ng-show="custform.contact.$error.required && custform.email.$error.email">E mail is required.</span>
+				Invalid E mail
+				</span>
+			</fieldset>
+			
+			
+
+			<input type="submit"  ng-disabled="custform.$invalid" ng-click="add()" class="btn btn-primary" value="Add" />
+			
+		</form>
+		

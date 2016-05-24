@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html ng-app="MyApp">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="shortcut icon" href="../img/logo.ico" />
+<title>Rounak</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/mycss.css">
+<script src="js/angular.js" ></script>
+<script src="js/angular-cookies.js" ></script>
+<script src="js/angular-route.js" ></script>
+<script src="js/highcharts.js" ></script>
+<script src="js/main.js" ></script>
+<script src="js/controller.js" ></script>
+<link rel="stylesheet" type="text/css" href="css/mycss.css">
+
+<!-- Note for version 1.0.7 no need to import angular-route.js and inject dependency in angular.module("myapp",['ngRoute']); -->
+
+</head>
+<body>
+		<nav class="navbar navbar-default">
+		
+		
+		  <div class="container-fluid">
+		    <div class="navbar-header">
+		      <a class="navbar-brand" href="#/">Rounak</a>
+		    </div>
+		    <div>
+		      <ul class="nav navbar-nav">
+		        <li><a href="#/">Home</a></li>
+		        <li><a href="#register">Register</a></li>
+		        <li><a href="#view">View List</a></li>
+		        <li><a href="#addtocart">Add To Cart</a></li>
+		        <li><a href="#todolist">To Do List</a></li>
+		        <li><a href="#develop" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <i class="icon-book icon-white"></i> Develop <b class="caret"></b>
+                  </a>
+							<ul class="dropdown-menu">
+                    				<li><a href="#tutorial">Tutorial</a></li>
+				                    <li><a href="#guide">Developer Guide</a></li>
+				                    
+                 			 </ul>
+							
+							
+							                  
+                  
+                  </li>
+                   <li><a href="#charts">Charts</a></li>
+		      </ul>
+		    </div>
+		  </div>
+		</nav>
+
+<ng-view></ng-view>
+
+<br>
+<div class="panel panel-default">
+   
+    <div class="panel-footer">rounak.goliya@tcs.com</div>
+  </div>
+
+</body>
+</html>

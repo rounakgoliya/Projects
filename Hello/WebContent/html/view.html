@@ -1,0 +1,31 @@
+<div>
+<b>Search by FirstName:</b> <input type="text" ng-model="search2.fname"></input>
+<b>Search by LastName:</b> <input type="text" ng-model="search.lname"></input>
+<b>Search by City:</b> <input type="text" ng-model="search1.city"><br><br></input>
+
+	<table>
+			<thead>
+				<tr>
+					<th></th>
+					<th>Id</th>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>City</th>
+					<th>Contact No.</th>
+					<th>E mail</th>
+				</tr>
+			</thead>
+			<tbody>
+					<tr ng-repeat= "x in customers | filter:search  | filter:search1 | filter:search2 |orderBy:'id'">
+					<td></td>
+					<td>{{x.id}}</td>
+					<td>{{x.fname}}</td>
+					<td>{{x.lname}}</td>
+					<td>{{x.city}}</td>
+					<td>{{x.contact}}</td>
+					<td>{{x.email}}</td>
+				</tr>
+				
+			</tbody>
+		</table>
+</div>
