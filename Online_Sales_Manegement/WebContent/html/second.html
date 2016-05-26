@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>ONLINE SALES MANAGEMENT</title>
+
+<link rel="stylesheet" href="..//css/cssfile.css" type="text/css"></link>
+</head>
+<body style="background: url('back.jpg'); background-repeat:repeat;">
+
+<div id="logo">
+<img src="logo.png">
+</div>
+
+<div id="header">
+<h1 style="color:white">ONLINE SALES MANAGEMENT SYSTEM</h1>
+</div>
+
+<div id="container">
+<table width=100% id="navigation"><tr>
+<td width=33%><div id="row" onmouseover="this.style.background='red';" onmouseout="this.style.background='black';"><a href="AboutUs.html" >ABOUT US</a></div>
+</td><td width=33% ><div id="row" onmouseover="this.style.background='red';" onmouseout="this.style.background='black';"><a href="ContactUs.html" >CONTACT US</a></div>
+</td><td width=33.3% ><div id="row" onmouseover="this.style.background='red';" onmouseout="this.style.background='black';"><a href="AnyQueries.html" >ANY QUERIES</a></div>
+</td>
+</tr>
+</table>
+</div>
+
+<div id="nav">
+<div id="col" style="background-color:red;"><a href="second.html">HOME</a><br></div>
+<div id="col" onmouseover="this.style.background='red';" onmouseout="this.style.background='black';"><a href="AddProduct.html">ADD PRODUCT</a><br></div>
+<div id="col" onmouseover="this.style.background='red';" onmouseout="this.style.background='black';"><a href="ProductReport1.html">PRODUCT REPORT</a><br></div>
+<div id="col" onmouseover="this.style.background='red';" onmouseout="this.style.background='black';"><a href="AddEmployee.html">ADD EMPLOYEE</a><br></div>
+<div id="col" onmouseover="this.style.background='red';" onmouseout="this.style.background='black';"><a href="EmployeeReport.html">VIEW EMPLOYEE</a><br></div>
+<div id="col" onmouseover="this.style.background='red';" onmouseout="this.style.background='black';"><a href="AddStore.html">ADD STORE</a><br></div>
+<div id="col" onmouseover="this.style.background='red';" onmouseout="this.style.background='black';"><a href="StoreReport.html">STORE REPORT</a><br></div>
+<div id="col" onmouseover="this.style.background='red';" onmouseout="this.style.background='black';"><a href="first.html">LOGOUT</a><br></div>
+</div>
+
+<div id="section">
+<script language="JavaScript">
+var i = 0;
+var path = new Array();
+ 
+// LIST OF IMAGES
+path[0] = "main_image1.JPG";
+path[1] = "main_image2.JPG";
+path[2] = "main_image3.JPG";
+path[3] = "2.jpeg";
+path[4] = "bb.jpg";
+
+function swapImage()
+{
+   document.slide.src = path[i];
+   if(i < path.length - 1) 
+	   i++; 
+   else 
+	   i = 0;
+   setTimeout("swapImage()",3000);
+}
+window.onload=swapImage;
+</script>
+<img name="slide" src="main_image1.JPG"/>
+</div>
+
+<h3 style="margin-left:84%">Welcome ADMIN</h3>
+
+<h3><marquee>Get Everthing you need without leaving your armchair</marquee></h3>
+
+<div id="footer">CopyRight@MMXV TJA90_Group 2
+</div>
+
+</body>
+</html>
