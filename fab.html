@@ -1,0 +1,330 @@
+<!doctype html>
+<html ng-app ="MyApp">
+   
+   <head>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="https://rawgit.com/angular-ui/angular-google-maps/2.1.5/dist/angular-google-maps.min.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDoWEAf8lM1aiqJcF1ncsEk9Rw4xKFy62M"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.min.js"></script>
+	<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+	<style>
+	h1 {
+        font-size: 35px;
+        text-transform: uppercase;
+        color: green;
+        font-weight: 600;
+    	}
+
+		#topnav{
+	    height: 90px;
+  background: red; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left,rgba(255,0,0,0),rgba(255,0,0,1)); /*Safari 5.1-6*/
+  background: -o-linear-gradient(right,rgba(255,0,0,0),rgba(255,0,0,1)); /*Opera 11.1-12*/
+  background: -moz-linear-gradient(right,rgba(255,0,0,0),rgba(255,0,0,1)); /*Fx 3.6-15*/
+  background: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1)); /*Standard*/
+}
+	.back{
+		
+		    margin-top: 50px;
+		}
+		.service-list {
+list-style-type: none;
+margin-left:0px;
+padding-left:0px;
+
+}
+
+.service-list img
+{
+float:left;
+}
+
+.service-list p,h3 {
+ 
+
+padding: 0px;
+}
+.angular-google-map-container {
+        height: 400px;
+}
+.form{
+
+}
+td, th {
+    padding: 5px;
+}
+	</style>
+	<script>
+		var MyApp = angular.module('MyApp',['uiGmapgoogle-maps']);
+		MyApp.controller('fino',function($scope){
+				$scope.MyTabs = [{tabName:'Customers'},{tabName:'Vehicle'},{tabName:'Maps'},{tabName:'ClusterMap'},{tabName:'Dummy2'},{tabName:'Dummy3'}];
+				$scope.MyCustomers = [{custName:'Rounak',custId:1,cars:[{carId:1,carName:'Honda',carNumber:"MH11BV4506",Lat:18,Lng:75,image:"http://www.freeiconspng.com/uploads/old-car-icon-png-17.png"},{carId:2,carName:'Hyundai',carNumber:"MH12BD1236",Lat:20,Lng:78,image:"http://icons.iconarchive.com/icons/iconshock/real-vista-transportation/256/vintage-car-icon.png"},{carId:3,carName:'Fiat',carNumber:"MH21BV0987",Lat:18,Lng:75,image:"https://d30y9cdsu7xlg0.cloudfront.net/png/152693-200.png"},{carId:4,carName:'Scorpio',carNumber:"RJ11BV4506",Lat:19,Lng:78,image:"https://d30y9cdsu7xlg0.cloudfront.net/png/61292-200.png"},{carId:5,carName:'Verna',carNumber:"KA11BV8766",Lat:10,Lng:10,image:"http://plainicon.com/dboard/userprod/2924_d84d1/prod_thumb/plainicon.com-59800-512px-b34.png"}],image:"http://www.imagenspng.com.br/wp-content/uploads/2015/02/small-super-mario.png",phoneNumber:'9807654321'},{custName:'Siddarth',custId:2,cars:[{carId:1,carName:'Honda',carNumber:"AS11DS4986",Lat:18,Lng:75,image:"http://plainicon.com/dboard/userprod/2924_d84d1/prod_thumb/plainicon.com-59800-512px-b34.png"},{carId:2,carName:'Jaguar',carNumber:"WB23BV1506",Lat:20,Lng:78,image:"https://cdn0.iconfinder.com/data/icons/classic-cars-by-cemagraphics/512/red_512.png"},{carId:3,carName:'Mercedes',carNumber:"DL11BV1231",Lat:18,Lng:75,image:"https://d30y9cdsu7xlg0.cloudfront.net/png/152693-200.png"},{carId:4,carName:'Fortuner',carNumber:"AS23BV4596",Lat:19,Lng:78,image:"http://plainicon.com/dboard/userprod/2924_d84d1/prod_thumb/plainicon.com-59800-512px-b34.png"},{carId:5,carName:'Ferrari',carNumber:"MH22BV1192",Lat:10,Lng:10,image:"https://d30y9cdsu7xlg0.cloudfront.net/png/152693-200.png"}],image:"http://www.imagenspng.com.br/wp-content/uploads/2015/02/super-mario-05.png",phoneNumber:'9870632321'}]
+				$scope.view_tab = 'Customers';
+
+			/*/function to load modal 
+			 $(window).load(function(){
+				 $('#myModal').modal({
+					   keyboard: false,
+					   backdrop: 'static',
+				    show: true,
+				   })
+			    });*/
+				//change tab
+			$scope.changeTab = function(tab) {
+   				 $scope.view_tab = tab;
+					switch (tab) {
+          					  case 'Vehicle':
+              					  	$scope.showVehicle(0,'Vehicle');
+              						  break;
+           					 case 'Maps':
+           					     $scope.showMaps(-1,'Maps');
+            					    break;
+						case 'ClusterMap':
+              					  	$scope.showMapCluster('ClusterMap');
+              						  break;
+           					 default:
+
+       						 }
+					}
+				//show custform
+				$scope.showForm = function(tab){
+					$scope.view_form = tab;
+				}
+				//add cust
+				$scope.submit = function(cust){
+					if(cust !== null){
+					cust.custId = $scope.MyCustomers.length + 1;
+					cust.image = "http://www.imagenspng.com.br/wp-content/uploads/2015/02/small-super-mario.png";
+					cust.cars[0].image = "https://cdn0.iconfinder.com/data/icons/classic-cars-by-cemagraphics/512/red_512.png";
+					cust.cars[0].carId = 1;
+					cust.cars[0].Lat = 18;
+					cust.cars[0].Lng = 77;
+					$scope.MyCustomers.push(cust);
+					$scope.c = "";
+					$scope.view_form = "";
+					console.log($scope.MyCustomers[2]);}
+					}
+			//show vehicle
+			$scope.showVehicle = function(cind,tab){
+				console.log(cind);
+				$scope.MyVehicle = $scope.MyCustomers[cind].cars;
+				$scope.view_tab = tab;
+				}
+			//show Maps
+			$scope.showMaps = function(vind,tab){
+				$scope.view_tab = tab;
+				if(vind >= 0){
+				$scope.Latitude =$scope.MyVehicle[vind].Lat;
+				$scope.Longitude =$scope.MyVehicle[vind].Lng;}
+				else{ //Default location is Delhi
+					$scope.Latitude = 28.7041;
+					$scope.Longitude = 77.1025;
+					}
+				$scope.map = {
+                        center: {
+                                latitude: $scope.Latitude,
+                                longitude: $scope.Longitude,
+                        },
+                        zoom: 8
+               			 };
+				$scope.options = {
+						scrollwheel: false
+				};
+
+			$scope.marker = {
+						id: 0,
+						coords: {
+								latitude: $scope.Latitude,
+								longitude: $scope.Longitude
+						},
+						options: {
+								draggable: true
+						}
+				};
+				}
+			    $scope.showMapCluster =function (tab) {
+				$scope.view_tab = tab;
+				  $scope.map = {
+      center: {
+        latitude: 27.1451,
+        longitude: 78.6680
+      },
+      zoom: 3,
+      bounds: {}
+    };
+    $scope.options = {
+      mapTypeControl: true,
+            scaleControl: true,
+            streetViewControl: true
+    };
+
+	$scope.locations =[];
+	for(var i = -5000; i < 5000; i += 1) {
+    var marker = {id: i,latitude:27.8913 + i*.001*Math.random(),longitude:78.0792 + i*.001*Math.random()};
+    $scope.locations.push(marker);
+}
+for(var i = -5000; i < 5000; i += 1) {
+    var marker = {id: i+10001,latitude:26.00 + i*.001*Math.random(),longitude:80.02 + i*.001*Math.random()};
+    $scope.locations.push(marker);
+}
+for(var i = -5000; i < 5000; i += 1) {
+    var marker = {id: i+20001,latitude:26.8913 + i*.0005*Math.random(),longitude:73.0792 + i*.0007*Math.random()};
+    $scope.locations.push(marker);
+}
+	for(var i = -5000; i < 5000; i += 1) {
+    var marker = {id: i+30001,latitude:22.8913 + i*.001*Math.random(),longitude:88.0792 + i*.001*Math.random()};
+    $scope.locations.push(marker);
+}
+	for(var i = -5000; i < 5000; i += 1) {
+    var marker = {id: i+40001,latitude:16 + i*.001*Math.random(),longitude:78 + i*.001*Math.random()};
+    $scope.locations.push(marker);
+}
+	for(var i = -5000; i < 5000; i += 1) {
+    var marker = {id: i+50001,latitude:25 + i*.001*Math.random(),longitude:85 + i*.001*Math.random()};
+    $scope.locations.push(marker);
+}
+	for(var i = -5000; i < 5000; i += 1) {
+    var marker = {id: i+60001,latitude:19 + i*.001*Math.random(),longitude:75 + i*.001*Math.random()};
+    $scope.locations.push(marker);
+}
+for(var i = -5000; i < 5000; i += 1) {
+    var marker = {id: i+70001,latitude:9 + i*.0001*Math.random(),longitude:78 + i*.0001*Math.random()};
+    $scope.locations.push(marker);
+}}
+		});
+	</script>
+   </head>
+   
+   <body ng-controller="fino">
+   
+	<div class="row">
+		<div class="col-sm-12" id="topnav">
+		<div><i class="fa fa-globe" style="font-size: 75px;    margin-left: 20px;    margin-top: 10px;"></i>
+		<h1 style="margin-left: 100px;margin-top: -57px;">Intellicars</h1>
+      	</div>
+		</div>
+		
+	</div>
+	<div class="row back">
+		<div class="col-sm-3">
+    <ul class="nav nav-tabs nav-stacked nav-pills" role="tablist">
+        <li ng-repeat="i in MyTabs">
+            <a class="btn-lg" ng-click="changeTab(i.tabName)" href="">{{i.tabName}}</a>
+        </li>
+        
+    </ul>
+</div>
+<div class="col-sm-9">
+    <div>
+        <div  ng-show="view_tab === 'Customers'">
+            <h1>Customers</h1>
+		<ul>
+			<li class="service-list" ng-repeat="j in MyCustomers">
+			<a href="" ng-click="showVehicle($index,'Vehicle')"><img src="{{j.image}}" alt="icon" width="100" height="auto" /><br>
+
+			<h3>Name : {{j.custName}}</h3>
+			<p>
+			Mobile Number: {{ j.phoneNumber}}
+			</P></a><br/><br/>
+			</li>
+		</ul>
+	<button type="button" class="btn btn-primary" ng-click="showForm('customerForm')">+ Add Customer</button><br/>
+		 <form name = "customerForm" novalidate ng-show="view_form === 'customerForm'">
+            <table border = "0">
+               <tr>
+                  <td>Enter Name:</td>
+                  <td><input name = "firstname" type = "text" ng-model = "c.custName" required>
+                     <span style = "color:red" ng-show = "customerForm.firstname.$dirty && customerForm.firstname.$invalid">
+                        <span ng-show = "customerForm.firstname.$error.required">Name is required.</span>
+                     </span>
+                  </td>
+               </tr>
+               
+               <tr>
+                  <td>Email: </td><td><input name = "email" type = "email" ng-model = "email" length = "100" required>
+                     <span style = "color:red" ng-show = "customerForm.email.$dirty && customerForm.email.$invalid">
+                        <span ng-show = "customerForm.email.$error.required">Email is required.</span>
+                        <span ng-show = "customerForm.email.$error.email">Invalid email address.</span>
+                     </span>
+                  </td>
+               </tr>
+		<tr>
+                  <td>Phone Number: </td><td><input name = "phoneNumber" type = "text" ng-model = "c.phoneNumber" length = "100" required>
+                  </td>
+               </tr>
+		<tr>
+                  <td>Car Name : </td><td><input name = "carName" type = "text" ng-model = "c.cars[0].carName" length = "100" required>
+                  </td>
+               </tr>
+		<tr>
+                  <td>Car Number: </td><td><input name = "carNumber" type = "text" ng-model = "c.cars[0].carNumber" length = "100" required>
+                  </td>
+               </tr>
+               
+               <tr>
+                  <td>
+                  </td>
+                  <td>
+                     <button ng-disabled = "customerForm.firstname.$dirty &&
+                        customerForm.firstname.$invalid || customerForm.email.$dirty &&
+                        customerForm.email.$invalid" ng-click="submit(c)">Submit</button>
+                  </td>
+               </tr>
+					
+            </table>
+         </form>
+        </div>
+        <div  ng-show="view_tab === 'Vehicle'">
+            <ul>
+			<li class="service-list" ng-repeat="k in MyVehicle">
+			<a href="" ng-click="showMaps($index,'Maps')"><img src="{{k.image}}" alt="icon" width="100" height="auto" /><br>
+
+			<h3>{{k.carName}}</h3>
+			<p>
+			Car Number : {{ k.carNumber}}
+			</P></a><br/><br/>
+			</li>
+		</ul>
+        </div>
+	<div  ng-show="view_tab === 'Maps'">
+            
+		<ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options">
+    <ui-gmap-marker coords="marker.coords" options="marker.options" idkey="marker.id">
+    </ui-gmap-marker>
+  </ui-gmap-google-map>
+        </div>
+	<div  ng-show="view_tab === 'ClusterMap'">
+             <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options" bounds="map.bounds">
+        <ui-gmap-markers models="locations" coords="'self'" doCluster="true" typeOptions='{"gridSize":20,"ignoreHidden":true,"minimumClusterSize":2}' icon="'icon'" >
+        </ui-gmap-markers>
+    </ui-gmap-google-map>
+        </div>
+	<div  ng-show="view_tab === 'Dummy2'">
+            This is Dummy2 content
+        </div>
+    </div>
+</div>
+	</div>
+	
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h4 class="modal-title" id="myModalLabel">Hello</h4>
+       </div>
+       <div class="modal-body">
+       	<form name="myForm" novalidate>
+         <h4>Enter Your Name</h4><input name="myName" placeholder="Username" ng-minlength=3 ng-model="myName" ng-pattern="/^[a-zA-Z]*$/" required>
+       </div>
+       <div class="modal-footer">
+         <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="showQuestion()" ng-disabled="myForm.myName.$invalid">Welcome</button>
+       </div>
+     </div><!-- /.modal-content -->
+   </div><!-- /.modal-dialog -->
+ </div><!-- /.modal -->
+   </body>
+</html>
