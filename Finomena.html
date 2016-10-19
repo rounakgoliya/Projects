@@ -1,0 +1,194 @@
+<!doctype html>
+<html ng-app ="MyApp">
+   
+   <head>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+	<style>
+	h1 {
+        font-size: 35px;
+        text-transform: uppercase;
+        color: green;
+        font-weight: 600;
+    	}
+
+		#topnav{
+	    height: 90px;
+  background: red; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left,rgba(255,0,0,0),rgba(255,0,0,1)); /*Safari 5.1-6*/
+  background: -o-linear-gradient(right,rgba(255,0,0,0),rgba(255,0,0,1)); /*Opera 11.1-12*/
+  background: -moz-linear-gradient(right,rgba(255,0,0,0),rgba(255,0,0,1)); /*Fx 3.6-15*/
+  background: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1)); /*Standard*/
+}
+	.back{
+		
+		    margin-top: 50px;
+		}
+		.button {
+    position: relative;
+    background-color: #4CAF50;
+    border: none;
+    font-size: 20px;
+    color: #FFFFFF;
+    width: 100px;
+    text-align: center;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.button:after {
+    content: "";
+    background: #90EE90;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px!important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s
+}
+
+.button:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+}
+.listquestion{
+    margin-left: 40px;
+    font-size: 20px;
+}
+
+	</style>
+	<script>
+		var MyApp = angular.module('MyApp',[]);
+		MyApp.controller('fino',function($scope,$http){
+			$scope.showQuestionflag = false;
+			$scope.showRulesflag = false;
+			$scope.count = 0;
+			$scope.disable = [false,false,false,false,false];
+			$scope.questionArray = [{question:"Grand Central Terminal, Park Avenue, New York is the world's largest railway station" , answerc:"true" ,answeru:"",score:0},
+			                {question:"A long double can be used if range of a double is not enough to accommodate a real number.",answerc:"true",answeru:"",score:0},
+			                {question:"The brain of any computer system is Memory",answerc:"false",answeru:"",score:0},
+			                {question:"In C all functions except main() can be called recursively.",answerc:"false",answeru:"",score:0},
+			                {question:"Functions can be called either by value or reference",answerc:"true",answeru:"",score:0}];
+							
+			//function to load modal 
+			 $(window).load(function(){
+				 $('#myModal').modal({
+					   keyboard: false,
+					   backdrop: 'static',
+				    show: true,
+				   })
+			    });
+			//function to show question
+			$scope.showQuestion = function(){
+				$scope.showQuestionflag = true;
+				$scope.showRulesflag = true;}
+			$scope.answered = function(val,ind){
+				$scope.disable[ind] = true;
+				$scope.questionArray[ind].answeru = val;
+			}
+			//submit answer
+			$scope.submit = function(){
+				for(var i =0 ;i<5;i++){
+					if($scope.questionArray[i].answerc == $scope.questionArray[i].answeru)
+						{$scope.count = $scope.count + 5;
+						$scope.questionArray[i].score = 5;}
+					else
+						{$scope.count = $scope.count - 1;
+						$scope.questionArray[i].score = -1;}
+				}
+				console.log($scope.questionArray[3].score);
+				$scope.showGraph = true;
+				$scope.showQuestionflag = false;
+		 Highcharts.chart('graph', {
+      title: {
+        text: $scope.myName + '\'s analysis'
+      },
+
+      xAxis: {
+        categories: ['GK', 'Tech - C', 'Basic', 'Function', 'Java'
+        ]
+      },
+
+      series: [{
+        data: [$scope.questionArray[0].score, $scope.questionArray[1].score, $scope.questionArray[2].score, $scope.questionArray[3].score, $scope.questionArray[4].score]
+      }]
+    });
+	
+			}
+			
+		});
+	</script>
+   </head>
+   
+   <body ng-controller="fino">
+   
+	<div class="row">
+		<div class="col-sm-12" id="topnav">
+		<div><i class="fa fa-globe" style="font-size: 75px;    margin-left: 20px;    margin-top: 10px;"></i>
+		<h1 style="margin-left: 100px;margin-top: -57px;">Finomena</h1>
+      	</div>
+		</div>
+		
+	</div>
+	<div class="row back">
+		<div  id="quiz" class="col-sm-8" style="" ng-show="showQuestionflag">
+	       	<ol class="list-group">
+				<li ng-repeat="i in questionArray" class="listquestion">
+				 
+  				  <h5 class="list-group-item-heading" style="font-size: 20px;">{{i.question}}</h5>
+ 				   <button class="button" ng-click="answered('true',$index)" ng-disabled="disable[$index]">True</button>
+ 				   <button class="button" ng-click="answered('false',$index)" ng-disabled="disable[$index]">False</button>
+					<br><br>
+				</li>
+				</ol>
+			<div ng-show="disable[4]&&disable[3]&&disable[2]&&disable[1]&&disable[0]">
+			<button class="button" ng-click="submit();" style="margin-left: 440px;">Submit</button>
+			</div>
+			</div>
+		<div id="graph" class="col-sm-8" style="" ng-show="showGraph">
+			</div>
+		<div  class="col-sm-4" style="" ng-show="showRulesflag">
+			<h3>Welcome {{myName}}</h3>
+			<p style="font-size: 18px;">The following are the rules and game play for General Quiz </p>
+				<ul>
+ 				    <li>For each statement you have two options, True or False?.</li>
+  					<li>Click on the answer that you think is right</li>
+				    <li>There is no time limit in which to answer each True or False?</li>
+				    <li>Each correct answer will give you 5 points.</li>
+				    <li>Each incorrect answer will deduct your 1 point.</li>
+				    <li><strong>All question are compulsory</strong></li>
+				    <li>You can view your result after completion of quiz</li>
+				    <li><b>!!Important</b> Once answered cannot be change</li>
+				</ul>
+			</div>
+	</div>
+	
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h4 class="modal-title" id="myModalLabel">Hello</h4>
+       </div>
+       <div class="modal-body">
+       	<form name="myForm" novalidate>
+         <h4>Enter Your Name</h4><input name="myName" placeholder="Username" ng-minlength=3 ng-model="myName" ng-pattern="/^[a-zA-Z]*$/" required>
+       </div>
+       <div class="modal-footer">
+         <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="showQuestion()" ng-disabled="myForm.myName.$invalid">Welcome</button>
+       </div>
+     </div><!-- /.modal-content -->
+   </div><!-- /.modal-dialog -->
+ </div><!-- /.modal -->
+   </body>
+</html>
