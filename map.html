@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Marker Clustering</title>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+
+      function initMap() {
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 3,
+          center: {lat: 27.024, lng: 78.887}
+        });
+
+        // Create an array of alphabetical characters used to label the markers.
+        var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+        // Add some markers to the map.
+        // Note: The code uses the JavaScript Array.prototype.map() method to
+        // create an array of markers based on a given "locations" array.
+        // The map() method here has nothing to do with the Google Maps API.
+        var markers = locations.map(function(location, i) {
+          return new google.maps.Marker({
+            position: location,
+            label: labels[i % labels.length]
+          });
+        });
+
+        // Add a marker clusterer to manage the markers.
+        var markerCluster = new MarkerClusterer(map, markers,
+            {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+      }
+	var locations =[];
+	for(var i = -5000; i < 5000; i += 1) {
+    var marker = {lat:27.8913 + i*.001*Math.random(),lng:78.0792 + i*.001*Math.random()};
+    locations.push(marker);
+}
+for(var i = -5000; i < 5000; i += 1) {
+    var marker = {lat:26.00 + i*.001*Math.random(),lng:80.02 + i*.001*Math.random()};
+    locations.push(marker);
+}
+for(var i = -5000; i < 5000; i += 1) {
+    var marker = {lat:26.8913 + i*.0005*Math.random(),lng:73.0792 + i*.0007*Math.random()};
+    locations.push(marker);
+}
+	for(var i = -5000; i < 5000; i += 1) {
+    var marker = {lat:22.8913 + i*.001*Math.random(),lng:88.0792 + i*.001*Math.random()};
+    locations.push(marker);
+}
+	for(var i = -5000; i < 5000; i += 1) {
+    var marker = {lat:16 + i*.001*Math.random(),lng:78 + i*.001*Math.random()};
+    locations.push(marker);
+}
+	for(var i = -5000; i < 5000; i += 1) {
+    var marker = {lat:25 + i*.001*Math.random(),lng:85 + i*.001*Math.random()};
+    locations.push(marker);
+}
+	for(var i = -5000; i < 5000; i += 1) {
+    var marker = {lat:19 + i*.001*Math.random(),lng:75 + i*.001*Math.random()};
+    locations.push(marker);
+}
+for(var i = -5000; i < 5000; i += 1) {
+    var marker = {lat:9 + i*.0001*Math.random(),lng:78 + i*.0001*Math.random()};
+    locations.push(marker);
+}
+    </script>
+    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDoWEAf8lM1aiqJcF1ncsEk9Rw4xKFy62M&callback=initMap">
+    </script>
+  </body>
+</html>
