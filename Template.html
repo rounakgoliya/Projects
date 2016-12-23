@@ -1,0 +1,621 @@
+<!doctype html>
+<html>
+   
+   <head>
+	
+
+	
+		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+		<script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+	<style>
+	body{
+	background-color: rgba(2, 100, 100,0.1);
+	}
+.listquiz {
+    list-style-type: none;
+    margin: 15px;
+    padding: 0;
+    overflow: hidden;
+    
+}
+.config_list{
+    list-style-type: none;
+    padding: 0;
+    overflow: hidden;
+    
+}
+
+.listnav{
+list-style-type: none;
+    margin: 15px;
+   
+    padding: 0;
+    overflow: hidden;
+    background-color: rgba(20, 124, 131,1);}
+
+
+ .listquize{
+    float: none;
+    margin: 10px;
+    color: #52677B;
+    display: -webkit-box;
+    border-bottom: 1px solid #d6d6c2;
+}
+.listquizes{
+    float: none;
+        display: -webkit-box;
+    margin: 10px;
+    color: #52677B;
+    border-bottom: 1px solid #d6d6c2;
+}
+ 
+.accordion {
+    overflow:hidden;
+    box-shadow:0px 1px 3px rgba(0,0,0,0.25);
+    border-radius:3px;
+        width: 80%;
+            margin-left: 140px;
+                margin-top: 180px;
+    background:#f7f7f7;
+}
+.accordion-child {
+    background:#f7f7f7;
+}
+.preRequisiteMaterial , .Quizes , .configure{
+overflow:hidden;
+    box-shadow:0px 1px 3px rgba(0,0,0,0.25);
+    border-radius:3px;
+        width: 80%;
+            margin-left: 140px;
+                margin-top: 120px;
+    background:#f7f7f7;}
+ 
+.accordion-section-title {
+    width:100%;
+    padding:15px;
+    display:inline-block;
+    border-bottom:1px solid  #b3b3b3;
+    background:#F9FAFC;
+    font-size:1.200em;
+    text-shadow:0px 1px 0px #b3b3b3;
+    color:#52677B;
+}
+.title {
+    width:100%;
+    padding:15px;
+    display:inline-block;
+    border-bottom:1px solid  #b3b3b3;
+    background:#F9FAFC;
+    font-size:1.200em;
+    text-shadow:0px 1px 0px #b3b3b3;
+    color:#52677B;
+}
+.accordion-section-titlechild {
+    width:100%;
+    padding:10px;
+    display:inline-block;
+    border-bottom:1px solid #b3b3b3;
+    background:#F9FAFC;
+    font-size:1.200em;
+    text-shadow:0px 1px 0px #b3b3b3;
+    color:#52677B;
+}
+
+.section-quiz {
+    width:100%;
+    padding:10px;
+    display:inline-block;
+    border-bottom:1px solid #b3b3b3;
+    background:#F9FAFC;
+    font-size:1.200em;
+    text-shadow:0px 1px 0px #b3b3b3;
+    color:#52677B;
+}
+
+ 
+.accordion-section-title.active, .accordion-section-title:hover {
+    background:#52677B;
+    color:#F9FAFC;
+    text-decoration:none;
+}
+.accordion-section-titlechild.active, .accordion-section-titlechild:hover {
+    background:#52677B;
+    color:#F9FAFC;
+    text-decoration:none;
+}
+ 
+.accordion-section-content  {
+    padding:15px;
+        width: 80%;
+    display:none;
+        color: #52677B;
+}
+
+.accordion-section-cont  {
+    padding:15px;
+        width: 80%;
+    
+        color: #52677B;
+}
+
+.accordion-section-contentchild{
+  padding:15px;
+        width: 80%;
+    display:none;
+        color: #52677B;
+    }
+   
+   
+  .footer {
+  right: 0;
+  bottom: 0;
+  left: 0;
+      margin-top: 60px;
+  padding: 1rem;
+  background-color: #0194A4;
+  text-align: center;
+}
+	.dropbtn {
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    margin-left: 250px;
+}
+
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+
+.dropdown-content {
+    display: none;
+    margin-left: 250px;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 217px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+
+.dropdown-content a {
+    color: black;
+    text-decoration: none;
+    display: block;
+}
+
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.buttongrp{
+   margin-left: 850px;;
+        margin-top: 15px;}
+        
+        .button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+.button1 {
+     background-color: white;
+    color: black;
+    border: 2px solid #F2F2F2;
+}
+
+.button1:hover {
+   background-color: #F2F2F2;
+   color: white;
+}
+.button2 {
+    background-color: white; 
+    color:  #EFAD4F; 
+    border: 2px solid #EFAD4F;
+}
+
+button[disabled], html input[disabled] {
+  opacity: 0.65; 
+  cursor: not-allowed;
+}
+
+.button2:hover {
+    background-color:  #EFAD4F;
+    color: white;
+}
+.button3 {
+    background-color: white; 
+    color: #02CCE0; 
+    border: 2px solid #02CCE0;
+}
+
+.button3:hover {
+    background-color: #02CCE0;
+    color: white;
+}
+.button2:active .dropdown-content {
+    display: block;
+}
+.listtext{
+    width: 235px;}
+.grade{
+   margin-left: 250px;
+   margin-bottom: 3px;
+}
+.gradepoints{
+    margin-left: 450px;
+    display: -webkit-box;}
+.points{
+    margin-left: 150px;
+    width: 50px;
+    border-radius: 25%;
+}
+.datealign{
+    width: 215px;
+    display: inline-table;
+        margin-left: 10px;
+    margin-right: 110px;
+}
+.show {display:block;}
+.hide{display:none;}
+.clock{display:none;    width: 48px;}
+.assign{display:block;}
+.deletebutton{font-size:18px;margin-left:705px;border-width:0px;border-radius: 35%;}
+#savebtn{}
+#displayValue{position:absolute;top:0px;left:275px;width:775px;height:50px;border:1px solid #556;font-size: 20px;background-color: #F9FAFC;color:#52677B ;}
+	</style>
+	<script type="text/javascript">
+	
+	$(document).ready(function() {
+		$('.datepicker').datepicker();
+		
+		var quizes =[
+		             {
+		                 id:"1",
+		                 name:"Chapter1",
+		                 type:"chapter",
+		                 chld:[{
+		                     id:"1.1",
+		                     name:"Section1",
+		                     type:"section"
+		                     
+		                 },{
+		                     id:"1.2",
+		                     name:"Section2",
+		                     type:"section"
+		                     
+		                 }]
+		             },{
+		                 id:"2",
+		                 name:"Chapter2",
+		                 type:"chapter",
+		                 chld:[{
+		                     id:"2.1",
+		                     name:"Section3",
+		                     type:"section"
+		                     
+		                 }]
+		             },{
+		                 id:"3",
+		                 name:"Chapter3",
+		                 type:"chapter",
+		                 chld:[{
+		                     id:"3.1",
+		                     name:"Section4",
+		                     type:"section"
+		                    
+		                 }]
+		             },{
+		                 id:"4",
+		                 name:"Chapter4",
+		                 type:"chapter",
+		                 chld:[{
+		                     id:"4.1",
+		                     name:"Section5",
+		                     type:"section"
+		                     
+		                 }]
+		             }
+		         ]
+
+	  function close_accordion_section() {
+	        $('.accordion .accordion-section-title').removeClass('active');
+	        $('.accordion .accordion-section-content').slideUp(300).removeClass('open');
+	    }
+	  function close_accordion_section_child() {
+	        $('.accordion-child .accordion-section-titlechild').removeClass('active');
+	        $('.accordion-child .accordion-section-contentchild').slideUp(300).removeClass('open');
+	    }
+	 
+	    $('.accordion-section-title').click(function(e) {
+	        var currentAttrValue = $(this).attr('href');
+	 
+	        if($(e.target).is('.active')) {
+	        }else {
+	        	close_accordion_section();
+	            $(this).addClass('active');
+	            $('.accordion ' + currentAttrValue).slideDown(300).addClass('open'); 
+	        }
+	 
+	        e.preventDefault();
+	    });
+	    $('.accordion-section-child').on('click', '.accordion-section-titlechild',function(e) {
+	        var currentAttrValue = $(this).attr('href');
+	        if($(e.target).is('.active')) {
+	        }else {
+	        	close_accordion_section_child();
+	            $(this).addClass('active');
+	            $('.accordion-child ' + currentAttrValue).slideDown(300).addClass('open'); 
+	        }
+	 
+	        e.preventDefault();
+	    });
+	  
+	    
+	    function getValuesByKey(object, key) {
+	    	var values =[];
+	        for(var i =0; i<object.length;i++)
+	    	{
+	    		if(object[i].hasOwnProperty(key)){
+	    				if(object[i].type === "chapter"){ $('.accordion-section-child').append('<a class='+"accordion-section-titlechild"+' href='+"#"+object[i].name+'>'+object[i].name+'</a><div id='+object[i].name+' class='+"accordion-section-contentchild"+'></div>');}
+	    			    if(object[i].type === "section"){$('.accordion-section-contentchild').append('<p id='+object[i].name+'>'+object[i].name+'<input style='+"margin-left:"+'400px; type='+"checkbox"+' class='+"check"+' name='+object[i].type+' value='+object[i].name+"_"+object[i].id+' onchange='+"myValidate()"+'>10 Questions</p>');}
+	    				
+	    				if(object[i].hasOwnProperty("chld")){
+	    					getValuesByKey(object[i].chld, 'id');
+	    					}
+	    			}
+	    	}
+	        return values;
+	      } 
+
+	    getValuesByKey(quizes, 'id');
+	    
+	   
+	    
+	    $('.accordion-section-contentchild').on('click', '.check',function(e) {
+	    var checkedValue = null; 
+	    var inputElements = document.getElementsByClassName('check');
+	    
+	    for(var i=0; i<inputElements.length; i++){
+	          if(inputElements[i].checked && inputElements[i].count != "done"){
+	               checkedValue = inputElements[i].value;
+	               inputElements[i].count = "done";
+	               $('.accordion-section-cont').append('<div id='+checkedValue+' style='+"display:"+'inline-flex;'+"padding-bottom:"+'3px;><p>'+checkedValue+'</p><button class='+"deletebutton"+' onclick='+"deletelist('"+checkedValue+"')"+'>&#10005;</button></div>');
+	               
+	          }
+	    }
+	    });
+	    $('.preRequisiteMaterial').append('<p class='+"accordion-section-titlechild"+'>Pre-requisite Study Material</p><div class='+"accordion-section-cont"+'></div>');
+	    
+	    
+	});
+	function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+	window.onclick = function(event) {
+		  if (!event.target.matches('.button2')) {
+
+		    var dropdowns = document.getElementsByClassName("dropdown-content");
+		    var i;
+		    for (i = 0; i < dropdowns.length; i++) {
+		      var openDropdown = dropdowns[i];
+		      if (openDropdown.classList.contains('show')) {
+		        openDropdown.classList.remove('show');
+		      }
+		    }
+		  }
+		}
+	function deletelist(value){
+		 
+		    var inputElements = document.getElementsByClassName('check');
+		    
+		    for(var i=0; i<inputElements.length; i++){
+		          if(inputElements[i].value == value){
+		              inputElements[i].checked = false;
+		              inputElements[i].count = "";
+		          }
+		    }
+		    var element = document.getElementById(value);
+		    element.parentNode.removeChild(element);
+	}
+	
+	function myFunctionClock() {
+        document.getElementById("Myclock").classList.toggle("show");
+        document.getElementById("assign").classList.toggle("hide");
+    }
+	function myValidate(){
+		var x = document.getElementsByClassName("points");
+		var y = document.getElementById("displayValue").value;
+		var select = document.getElementById("mySelect").value;
+			var count = 0;
+			var points = 0;
+		var checkflag = 0;
+		
+		var inputElements = document.getElementsByClassName('check');
+		for(var i=0; i<inputElements.length; i++){
+	          if(inputElements[i].checked){
+	              checkflag++;
+	          }
+		}
+		if(y.length > 4 || select.length >4){
+			for(var i = 0; i<x.length;i++){
+				 if (isNaN(x[i].value) || x[i].value < 1 ) {
+				    } 
+				 else{
+					 count++; 
+					 points = points + parseInt(x[i].value);
+					 console.log(points);
+					  document.getElementById("pointsum").innerHTML = points.toString();
+					 } 
+				 }
+						          if(checkflag > 0 && count >3){
+						  			document.getElementById("savebtn").disabled = false;
+						  			
+						  		}
+						  		else{
+						  			document.getElementById("savebtn").disabled = true;
+						  		}
+			
+		}
+		 
+		
+	}
+	</script>
+   </head>
+   
+   <body>
+   <div>
+	<ul  class="listnav">
+  <li style="float:left;    margin: 10px;    color: white;">Library > My Courses > Biology > Assignments > Create Assignment</li>
+  
+  <li style="float:right;    margin: 10px;    color: white;"><i class="fa fa-user" style="font-size: 18px;"></i></li>
+  <li style="float:right;    margin: 10px;    color: white;"><i class="fa fa-bell" style="font-size: 18px;"></i><div style="background: #ff9999;border-radius: 50%;margin-left: 13px;margin-top: -32px;"><p>1</p></div></li>
+  
+</ul>
+<div style="position:relative;margin-top: 30px;">
+
+<select id="mySelect" style="position:absolute;top:0px;left:275px;width:800px; height:50px;line-height:20px;margin:0;padding:0;" onchange="document.getElementById('displayValue').value=this.options[this.selectedIndex].text; document.getElementById('idValue').value=this.options[this.selectedIndex].value;myValidate();">
+   <option></option>
+   <option value="Biology">Biology</option>
+   <option value="Zoology">Zoology</option>
+   <option value="Botany">Botany</option>
+</select>
+<input name="displayValue" placeholder="Type Assignment Name Or Select From Template (Mandatory)" id="displayValue" onchange="myValidate()" onfocus="this.select()" type="text">
+<input name="idValue" id="idValue" type="hidden" style="font-size: 40px;">
+<input name="displayValue" placeholder="Type Instruction here (Optional)" id="displayValue" style="position:absolute;top:65px;left:275px;width:800px;height:50px;font-size: 20px;" onfocus="this.select()" type="text">
+</div>
+
+<div class="accordion">
+    <div class="accordion-section">
+        <a class="accordion-section-title" href="#accordion-1">Pre-requisite Study Material</a>
+         
+        <div id="accordion-1" class="accordion-section-content" >
+            <p>The Quiz Prerequisite module is a Quiz module add-on. It lets site administrators configure quizzes to have prerequisites. When enabled and configured, this module will check to see if a prerequisite quiz has been taken before allowing users take a quiz. Site administrators can configure which user roles need to meet the prerequisites.</p>
+        </div>
+        <a class="accordion-section-title active" href="#accordion-2">Quizes (Mandatory)</a>
+         
+        <div id="accordion-2" class="accordion-section-content" style="display: block;">
+            <div class="accordion-child">
+    <div class="accordion-section-child">
+        
+    </div>
+</div>
+        </div>
+        <a class="accordion-section-title" href="#accordion-3">Activities</a>
+         
+        <div id="accordion-3" class="accordion-section-content">
+            <p>To educate the members and non-members and their parents about the Importance of cultivating the competency of the students to participate in Quiz competitions.To help the members and non-members to improve their IQ through various brain teaser/puzzle games.To educate the members and non-members about the importance of acquiring General -Knowledge and English vocabulary.</p>
+        </div>
+        
+           <a class="accordion-section-title" href="#accordion-4">Flash Cards</a>
+         
+        <div id="accordion-4" class="accordion-section-content">
+            <p>To educate the members and non-members and their parents about the Importance of cultivating the competency of the students to participate in Quiz competitions.To help the members and non-members to improve their IQ through various brain teaser/puzzle games.To educate the members and non-members about the importance of acquiring General -Knowledge and English vocabulary.</p>
+        </div>
+		<a class="accordion-section-title" href="#accordion-5">Lecture Slides</a>
+         
+        <div id="accordion-5" class="accordion-section-content">
+            <p>To educate the members and non-members and their parents about the Importance of cultivating the competency of the students to participate in Quiz competitions.To help the members and non-members to improve their IQ through various brain teaser/puzzle games.To educate the members and non-members about the importance of acquiring General -Knowledge and English vocabulary.</p>
+        </div>
+    </div>
+</div>
+
+<div class="preRequisiteMaterial">
+</div>
+<div class="Quizes">
+<p class="section-quiz">Quizes</p><div class="section-quiz-cont">
+<ul class="listquiz">
+	<li class="listquize">Settings</li>
+	<li class="listquize"><div class="listtext"><i class="fa fa-question" style="font-size: 14px;margin-right: 8px;"></i>Adaptive quiz</div><div class="radiobutton" style="margin-left: 150px;"><input type="radio" name="adaptive" value="Section Level">Section Level<br>
+  <input type="radio" name="adaptive" value="Chapter Level" checked="checked"> Chapter Level<br>
+  <input type="radio" name="adaptive" value="single"> Single quiz for all topics selected</div></li>
+	<li class="listquize" ><div class="listtext"><i class="fa fa-question" style="font-size: 14px;margin-right: 8px;"></i>Hand pick quiz</div><div class="radiobutton" style="margin-left: 150px;">
+  <input type="radio" name="handpick" value="preview" checked="checked"> Single quiz based on your selection</div></li>
+	<li class="listquize" ><div class="listtext"><i class="fa fa-question" style="font-size: 14px;margin-right: 8px;"></i> Consider previous attempts</div><div class="radiobutton" style="margin-left: 150px;">
+  <input type="radio" name="previousattemts" value="no" checked="checked"> No<div class="dropdown">
+  <button class="dropbtn" style="">Number of previous attempts &#10148;</button>
+  <div class="dropdown-content">
+    <a href="#">All </a>
+    <a href="#">Three</a>
+    </div>
+</div><br><input type="radio" name="previousattemts" value="yes">Yes</div></li>
+	<li class="listquize" ><div class="listtext"><i class="fa fa-question" style="font-size: 14px;margin-right: 8px;"></i>Allow multiple attempts</div><div class="radiobutton" style="margin-left: 150px;">
+  <input type="radio" name="allowattemts" value="no" checked="checked"> No<div class="dropdown">
+  <button class="dropbtn" style="">Select number of quiz attempts &#10148;</button>
+  <div class="dropdown-content">
+  	<a href="#">Unlimited</a>
+    <a href="#">Two</a>
+    <a href="#">Three</a>
+    </div></div><br><input type="radio" name="allowattemts" value="yes">Yes</div></li>
+	<li class="listquize" ><div class="listtext"><i class="fa fa-question" style="font-size: 14px;margin-right: 8px;"></i>Grading Considration</div><div class="radiobutton" style="margin-left: 150px;">
+  <input type="radio" name="grading" value="high" checked="checked"> Highest Score<br>
+  <input type="radio" name="grading" value="avg"> Average Score<br>
+  <input type="radio" name="grading" value="latest"> Latest Score</div></li>
+	
+	<li class="listquizes"><div class="listtext"><strong>Grading Points (Mandatory)</strong></div><div class="gradepoints"><strong >Lrnr Points</strong><strong style="padding-left: 90px;">Grade Points</strong>.</div></li>
+	<li class="listquizes"><div class="listtext">Overview of Anatomy and Physiology</div><div class="gradepoints"><p >120</p><input type="text" class="points" onchange="myValidate()"></input></div></li>
+	<li class="listquizes"><div class="listtext">Structural Organisation of Human Body</div><div class="gradepoints"><p >230</p><input type="text" class="points"  onchange="myValidate()"></input></div></li>
+	<li class="listquizes"><div class="listtext">Functions of Human Life</div><div class="gradepoints"><p >135</p><input type="text" class="points"  onchange="myValidate()"></input></div></li>
+	<li class="listquizes"><div class="listtext">The Six Level of Organisation</div><div class="gradepoints"><p >145</p><input type="text" class="points"  onchange="myValidate()"></input></div></li>
+	<li class="listquizes"><div class="listtext"><strong>Total Quiz Points</strong></div><div class="gradepoints"><strong >630</strong><strong id="pointsum" class="points"></strong>.</div></li>
+</ul>
+</div>
+</div>
+<div class="configure">
+	<p class="title">CONFIGURE ASSIGNMENT</p>
+	<ui class="config_list">
+		<li class="listquize"><div class="listtext"><i class="fa fa-question" style="font-size: 14px;margin-right: 8px;"></i>% of Overall Grade</div><input type="text" class="grade" style="width: 50px;border-radius: 25%;" onchange="myValidate()"></input></li>
+		<li class="listquize"><div class="listtext"><i class="fa fa-question" style="font-size: 14px;margin-right: 8px;"></i>Automatic Submission Enable</div><div class="radiobutton grade"><input type="radio" name="autosubmission" value="no" checked="checked"> No<br><input type="radio" name="autosubmission" value="yes"> Yes</div></li>
+		<li class="listquize"><div class="input-group date datealign" data-provide="datepicker">
+    <input type="text" class="form-control" placeholder="Available From">
+    <div class="input-group-addon">
+        <span class="fa fa-calendar"></span>
+    </div></div>
+    <div class="input-group date datealign" data-provide="datepicker">
+    <input type="text" class="form-control" placeholder="Due Date">
+    <div class="input-group-addon">
+        <span class="fa fa-calendar"></span>
+    </div></div>
+    <div class="input-group date datealign" data-provide="datepicker">
+    <input type="text" class="form-control" placeholder="Available Until">
+    <div class="input-group-addon">
+        <span class="fa fa-calendar"></span>
+    </div>
+</div></li>
+<li class="listquize"><div class="listtext"><i class="fa fa-question" style="font-size: 14px;margin-right: 8px;"></i>Enable % Based Rubrics(optional)</div><div class="radiobutton grade"><input type="radio" name="rubrics" value="no" checked="checked"> No<br><input type="radio" name="rubrics" value="yes"> Yes</div></li>
+	</ui>
+	
+</div>
+<div class="buttongrp">
+<button class="button button1">Cancel</button>
+<button  id="savebtn" onclick="myFunction()" class="button button2" disabled>Save</button><div id="myDropdown" class="dropdown-content" style="margin-left: 130px;min-width: 120px;">
+  	<a href="#">Save</a>
+    <a href="#">Save as Template</a>
+    </div>
+<button onclick="myFunctionClock()" class="button button3"><div id="assign" class="assign">Assign</div><div id="Myclock" class="clock"><i class="fa fa-clock-o"></i></div></button>
+</div>
+
+</div>
+
+	<div class="footer"><strong>Terms and Condition</strong></div>
+   </body>
+</html>
